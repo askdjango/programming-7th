@@ -2,6 +2,10 @@
 <ul>
 {% for article in article_list %}
 <li>
+    <a href="{% url "news:article_detail" article.slug %}">
+        {{ article.title }}
+    </a>
+
     <a href="/news/{{ article.slug }}/">
         {{ article.title }}
     </a>

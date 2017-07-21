@@ -1,4 +1,8 @@
 <h1>{{ article.title }} <small>{{ article.ip }}</small></h1>
 
+{% if article.photo %}
+    <img src="{{ article.photo.url }}" style="width: 100px;" />
+{% endif %}
+
 {{ article.content|linebreaks }}
 

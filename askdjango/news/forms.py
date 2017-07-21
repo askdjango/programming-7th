@@ -5,5 +5,5 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
         # fields = '__all__'
-        fields = ['title', 'slug', 'content']
+        fields = ['title', 'slug', 'content', 'photo']
 

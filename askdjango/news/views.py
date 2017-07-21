@@ -1,9 +1,24 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import Article
+from .forms import ArticleForm
 
 def article_list(request):
     return render(request, 'news/article_list.html', {
         'article_list': Article.objects.all(),
+    })
+
+def article_new(request):
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES)
+        if form.is_valid():
+            article = form.save()
+            # return redirect('/news/')
+            return redirect('news:article_list')
+    else:
+    #if request.method == 'GET':
+        form = ArticleForm()
+    return render(request, 'news/article_form.html', {
+        'form': form,
     })
 
 def article_detail(request, slug):

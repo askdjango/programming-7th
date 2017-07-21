@@ -1,0 +1,54 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" />
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-info">
+                <h1>{{ post.title }}</h1>
+
+                <img src="{{ post.photo.url }}" style="max-width: 100%;" />
+
+                {{ post.content|linebreaks }}
+
+                <hr/>
+
+                <ul>
+                {% for comment in post.comment_set.all %}
+                <li>
+                    {{ comment.message }}
+                    by {{ comment.author }}
+                </li>
+                {% endfor %}
+                </ul>
+
+                <a href="{% url "comment_new" post.pk %}" class="Btn btn-info btn-block">댓글쓰기</a>
+                <a href="{% url "post_list" %}" class="Btn btn-primary btn-block">목록으로</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+

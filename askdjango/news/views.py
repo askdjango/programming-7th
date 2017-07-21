@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Article
 from .forms import ArticleForm
@@ -28,4 +29,8 @@ def article_detail(request, slug):
     return render(request, 'news/article_detail.html', {
         'article': article,
     })
+
+
+def nametag(request, company, name):
+    return HttpResponse('회사 : {}, 이름 : {}'.format(company, name))
 

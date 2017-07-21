@@ -1,3 +1,9 @@
+{% load static %}
+
+<p>
+    {# <img src="/static/news/django-logo.png" style="width: 100px;" /> #}
+    <img src="{% static "news/django-logo.png" %}" style="width: 100px;" />
+</p>
 
 <ul>
 {% for article in article_list %}

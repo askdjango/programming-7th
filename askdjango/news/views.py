@@ -11,7 +11,9 @@ def article_new(request):
     if request.method == 'POST':
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
-            article = form.save()
+            article = form.save(commit=False)
+            article.ip = request.META['REMOTE_ADDR']
+            article.save()
             # return redirect('/news/')
             return redirect('news:article_list')
     else:

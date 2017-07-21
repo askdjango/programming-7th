@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.decorators import login_required
 from .models import Article
 from .forms import ArticleForm
 
@@ -8,11 +9,13 @@ def article_list(request):
         'article_list': Article.objects.all(),
     })
 
+@login_required
 def article_new(request):
     if request.method == 'POST':
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
             article = form.save(commit=False)
+            article.author = request.user
             article.ip = request.META['REMOTE_ADDR']
             article.save()
             # return redirect('/news/')

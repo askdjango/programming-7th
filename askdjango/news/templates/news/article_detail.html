@@ -1,5 +1,10 @@
 <h1>{{ article.title }} <small>{{ article.ip }}</small></h1>
 
+<p>
+    {{ article.author.username }}
+    {{ article.author.date_joined }}
+</p>
+
 {% if article.photo %}
     <img src="{{ article.photo.url }}" style="width: 100px;" />
 {% endif %}

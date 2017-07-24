@@ -48,7 +48,9 @@
                     {% for post in post_list %}
                     <tr>
                         <td>
-                            {{ post.title }}
+                            <a href="/blog/{{ post.pk }}/">
+                                {{ post.title }}
+                            </a>
                         </td>
                         <td>
                             {{ post.author }}

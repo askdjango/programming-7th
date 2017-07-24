@@ -24,5 +24,8 @@ def post_list(request):
 
 
 def post_detail(request, pk):
-    return HttpResponse('{}번 글을 보여주겠소.'.format(pk))
+    post = Post.objects.get(pk=pk)
+    return render(request, 'blog/post_detail.html', {
+        'post': post,
+    })
 

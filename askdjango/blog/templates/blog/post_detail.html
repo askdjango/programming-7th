@@ -1,4 +1,12 @@
-<h1>{{ post.title }}</h1>
+{% extends "blog/layout.html" %}
 
-{{ post.content|linebreaks }}
+{% block content %}
+    <h1>{{ post.title }}</h1>
+
+    {{ post.content|linebreaks }}
+
+    <hr/>
+
+    <a href="/blog/" class="btn btn-primary">글 목록</a>
+{% endblock %}
 

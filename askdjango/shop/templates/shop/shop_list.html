@@ -1,10 +1,37 @@
+{% extends "shop/layout.html" %}
 
-<ul>
-{% for shop in shop_list %}
-<li>
-    {{ shop.name }}
-    <a href="{% url "shop:rating_new" shop.pk %}">평점주기</a>
-</li>
-{% endfor %}
-</ul>
+{% block extra_head %}
+<script>
+$(function() {
+    $('.rating-5').click(function() {
+        if ( confirm("5점을 주시겠습니까?") ) {
+            var url = $(this).attr('href');
+            $.post(url, {score: 5}, function(response) {
+                console.log(response);
+            });
+        }
+        return false;
+    });
+});
+</script>
+{% endblock %}
+
+{% block content %}
+    <ul>
+    {% for shop in shop_list %}
+    <li>
+        <a href="{% url "shop:shop_detail" shop.pk %}">{{ shop.name }}</a>
+        <a href="{% url "shop:rating_new" shop.pk %}">평점주기</a>
+
+        <a href="{% url "shop:rating_new" shop.pk %}" class="rating-5">
+            5점주기
+        </a>
+        4점주기
+        3점주기
+        2점주기
+        1점주기
+    </li>
+    {% endfor %}
+    </ul>
+{% endblock %}
 

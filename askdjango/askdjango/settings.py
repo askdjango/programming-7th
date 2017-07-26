@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap3',  # django-bootstrap3 설치 필요
     'debug_toolbar',
     'blog',
     'shop',
@@ -59,7 +60,9 @@ ROOT_URLCONF = 'askdjango.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'askdjango', 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,7 +127,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, 'askdjango', 'static'),
+    os.path.join(BASE_DIR, 'askdjango', 'static'),
 ]
 
 MEDIA_URL = '/media/'

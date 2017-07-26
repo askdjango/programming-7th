@@ -4,5 +4,7 @@ from .models import Shop, Rating
 
 admin.site.register(Shop)
 
-admin.site.register(Rating)
+@admin.register(Rating)
+class RatingAdmin(admin.ModelAdmin):
+    list_display = ('shop', 'score')
 

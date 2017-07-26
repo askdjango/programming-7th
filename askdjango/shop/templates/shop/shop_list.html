@@ -1,0 +1,10 @@
+
+<ul>
+{% for shop in shop_list %}
+<li>
+    {{ shop.name }}
+    <a href="{% url "shop:rating_new" shop.pk %}">평점주기</a>
+</li>
+{% endfor %}
+</ul>
+

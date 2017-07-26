@@ -3,6 +3,18 @@ from .forms import RatingForm
 from .models import Shop
 
 
+def shop_list(request):
+    return render(request, 'shop/shop_list.html', {
+        'shop_list': Shop.objects.all(),
+    })
+
+
+def shop_detail(request, pk):
+    shop = get_object_or_404(Shop, pk=pk)
+    return render(request, 'shop/shop_detail.html', {
+        'shop': shop,
+    })
+
 
 def rating_new(request, shop_pk):
     # shop = Shop.objects.get(pk=shop_pk)
@@ -14,7 +26,7 @@ def rating_new(request, shop_pk):
             rating = form.save(commit=False)
             rating.shop = shop
             rating.save()
-            return redirect('/')  # FIXME
+            return redirect('shop:shop_detail', rating.shop.pk)
     else:
         form = RatingForm()
     return render(request, 'shop/rating_form.html', {

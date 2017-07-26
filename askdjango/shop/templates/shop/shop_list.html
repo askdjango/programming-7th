@@ -3,11 +3,17 @@
 {% block extra_head %}
 <script>
 $(function() {
-    $('.rating-5').click(function() {
-        if ( confirm("5점을 주시겠습니까?") ) {
+    $('.rating').click(function() {
+        var score = $(this).data('score');
+        if ( confirm(score + "점을 주시겠습니까?") ) {
             var url = $(this).attr('href');
-            $.post(url, {score: 5}, function(response) {
-                console.log(response);
+            $.post(url, {score: score}, function(response, status, xhr) {
+                if ( xhr.status == 200 ) {
+                    alert('평점저장!');
+                }
+                else {
+                    alert('오류 : ' + xhr.status);
+                }
             });
         }
         return false;
@@ -23,13 +29,21 @@ $(function() {
         <a href="{% url "shop:shop_detail" shop.pk %}">{{ shop.name }}</a>
         <a href="{% url "shop:rating_new" shop.pk %}">평점주기</a>
 
-        <a href="{% url "shop:rating_new" shop.pk %}" class="rating-5">
+        <a href="{% url "shop:rating_new" shop.pk %}" class="rating" data-score="5">
             5점주기
         </a>
-        4점주기
-        3점주기
-        2점주기
-        1점주기
+        <a href="{% url "shop:rating_new" shop.pk %}" class="rating" data-score="4">
+            4점주기
+        </a>
+        <a href="{% url "shop:rating_new" shop.pk %}" class="rating" data-score="3">
+            3점주기
+        </a>
+        <a href="{% url "shop:rating_new" shop.pk %}" class="rating" data-score="2">
+            2점주기
+        </a>
+        <a href="{% url "shop:rating_new" shop.pk %}" class="rating" data-score="1">
+            1점주기
+        </a>
     </li>
     {% endfor %}
     </ul>

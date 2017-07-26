@@ -27,6 +27,9 @@ $(function() {
     {% for shop in shop_list %}
     <li>
         <a href="{% url "shop:shop_detail" shop.pk %}">{{ shop.name }}</a>
+
+        <span class="label label-info">{{ shop.score_point }}</span>
+
         <a href="{% url "shop:rating_new" shop.pk %}">평점주기</a>
 
         <a href="{% url "shop:rating_new" shop.pk %}" class="rating" data-score="5">

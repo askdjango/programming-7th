@@ -26,6 +26,7 @@ def rating_new(request, shop_pk):
             rating = form.save(commit=False)
             rating.shop = shop
             rating.save()
+            rating.shop.calc_score()
             return redirect('shop:shop_detail', rating.shop.pk)
     else:
         form = RatingForm()

@@ -1,3 +1,10 @@
 from django.contrib import admin
+from .models import Shop, Rating
 
-# Register your models here.
+
+admin.site.register(Shop)
+
+@admin.register(Rating)
+class RatingAdmin(admin.ModelAdmin):
+    list_display = ('shop', 'score')
+

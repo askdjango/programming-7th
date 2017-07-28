@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', include('blog.urls')),
     url(r'^news/', include('news.urls', namespace='news')),
+    url(r'^shop/', include('shop.urls', namespace='shop')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,

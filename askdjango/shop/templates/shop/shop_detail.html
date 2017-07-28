@@ -1,0 +1,10 @@
+<h1>{{ shop.name }}</h1>
+
+<a href="{% url "shop:rating_new" shop.pk %}">평점주기</a>
+
+<hr/>
+
+{% for rating in shop.rating_set.all %}
+    {{ rating.score }}
+{% endfor %}
+

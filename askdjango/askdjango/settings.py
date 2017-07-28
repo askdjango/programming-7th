@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
     'bootstrap3',  # django-bootstrap3 설치 필요
     'debug_toolbar',
     'blog',

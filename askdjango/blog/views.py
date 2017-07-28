@@ -39,6 +39,7 @@ def post_new(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.user = request.user
+            post.ip = request.META['REMOTE_ADDR']
             post.save()
             return redirect('/blog/{}/'.format(post.id))
     else:

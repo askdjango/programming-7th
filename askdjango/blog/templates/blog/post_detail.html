@@ -3,6 +3,8 @@
 {% block content %}
     <h1>{{ post.title }} <small>(by {{ post.user }})</small></h1>
 
+    ip : {{ post.ip }}<br/>
+
     {{ post.content|linebreaks }}
 
     <hr/>

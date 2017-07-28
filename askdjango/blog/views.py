@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
@@ -31,6 +32,7 @@ def post_detail(request, pk):
     })
 
 
+@login_required
 def post_new(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
